@@ -237,7 +237,7 @@ public class Scrabble {
 			String input = in.readString();
 			if (input.equals(".")) {
 				break;
-			} else if (MyString.subsetOf(input, temp)) {
+			} else if (!(MyString.subsetOf(input, temp))) {
 				System.out.println("Invalid word. Try again.");
 			} else if (isWordInDictionary(input)) {
 				score += wordScore(input);
