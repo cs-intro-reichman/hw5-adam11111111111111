@@ -57,6 +57,9 @@ public class Scrabble {
 
 	// Checks if the given word is in the dictionary.
 	public static boolean isWordInDictionary(String word) {
+		if (word == "") {
+			return false;
+		}
 		int num1, num2 = NUM_OF_WORDS;
 		switch (word.charAt(0)) {
 			case 'a':
@@ -234,9 +237,11 @@ public class Scrabble {
 			String input = in.readString();
 			if (input.equals(".")) {
 				break;
+			} else if (MyString.subsetOf(input, temp)) {
+				System.out.println("Invalid word. Try again.");
 			} else if (isWordInDictionary(input)) {
 				score += wordScore(input);
-				System.out.println(input + " earned " + wordScore(input) + " points. Score: " + score + " points");			
+				System.out.println(input + " earned " + wordScore(input) + " points. Score: " + score + " points");
 				temp = MyString.remove(temp, input);
 			} else {
 				System.out.println("No such word in the dictionary. Try again.");
